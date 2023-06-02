@@ -22,6 +22,7 @@ router.post('/login', (req, res) => {
 
       const joinSaltPass = PASS_ARRAY.join('');
       console.log(joinSaltPass);
+
       bcrypt.compare(req.body.password, joinSaltPass)
         .then((passChecked) => {
           if (!passChecked) {
