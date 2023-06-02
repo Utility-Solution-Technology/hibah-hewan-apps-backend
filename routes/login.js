@@ -13,12 +13,15 @@ router.post('/login', (req, res) => {
     ],
   })
     .then((user) => {
-      const SALT_IDX_ARRAY_2 = process.env.SALT_IDX_LIST_2.split(',');
+      const SALT_IDX_ARRAY_REV = process.env.SALT_IDX_LIST.split(',').reverse();
       const PASS_ARRAY = user.password.split('');
 
-      SALT_IDX_ARRAY_2.forEach((item) => PASS_ARRAY.splice(item, 1));
+      SALT_IDX_ARRAY_REV.forEach(async (item) => {
+        await PASS_ARRAY.splice(item, 1);
+      });
 
       const joinSaltPass = PASS_ARRAY.join('');
+      console.log(joinSaltPass);
 
       bcrypt.compare(req.body.password, joinSaltPass)
         .then((passChecked) => {
