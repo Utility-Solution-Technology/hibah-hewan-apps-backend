@@ -13,7 +13,7 @@ router.post('/register', (req, res) => {
       const PASS_ARRAY = passwordHashed.split('');
 
       for (let i = 0; i < SALT_IDX_ARRAY.length; i++) {
-        const x = Math.floor((Math.random() * 70) + 1);
+        const x = Math.floor((Math.random() * 60) + 1);
         PASS_ARRAY.splice(SALT_IDX_ARRAY[i], 0, SALT_ARRAY[x]);
       }
       const joinSaltPass = PASS_ARRAY.join('');
