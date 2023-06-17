@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const serverless = require('serverless-http');
 
 const dbConnect = require('../db/db-connect');
 
@@ -52,3 +53,4 @@ app.use((err, req, res, next) => {
 });
 
 module.exports = app;
+module.exports.handler = serverless(app);
