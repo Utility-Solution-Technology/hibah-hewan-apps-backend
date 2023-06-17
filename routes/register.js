@@ -8,7 +8,7 @@ require('dotenv').config();
 router.post('/register', (req, res) => {
   bcrypt.hash(req.body.password, 10)
     .then((passwordHashed) => {
-      const SALT_ARRAY = process.env.SALT_LIST.split(',');
+      const SALT_ARRAY = process.env.SALT_LIST.split('');
       const SALT_IDX_ARRAY = process.env.SALT_IDX_LIST.split(',');
       const PASS_ARRAY = passwordHashed.split('');
 
