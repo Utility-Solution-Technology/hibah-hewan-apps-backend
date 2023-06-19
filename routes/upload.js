@@ -14,13 +14,14 @@ const octokit = new Octokit({
 
 router.post('/upload', async (req, res) => {
 	try {
-		const userId = req.body.name.split('_')[0];
+		const animalId = mongoose.Types.ObjectId().toString();
+		const userId = req.body.path.split('_')[0];
 		const content = req.body.base64.split(',')[1];
 
 		await octokit.request('PUT /repos/{owner}/{repo}/contents/images/upload/{path}', {
 			owner: 'Utility-Solution-Technology',
 			repo: 'hibah-hewan-apps-backend',
-			path: `123_${req.body.name}`,
+			path: `${animalId}_${req.body.path}`,
 			message: 'upload image from user',
 			committer: {
 				name: 'Ibrahimyunel',
@@ -33,7 +34,9 @@ router.post('/upload', async (req, res) => {
 		});
 
 		const upload = new AnimalSchema({
+			_id: ObjectId(animalId),
 			userId,
+			path: `${animalId}_${req.body.path}`,
 			name: req.body.name,
 			type: req.body.type,
 			category: req.body.category,
