@@ -34,7 +34,7 @@ router.post('/upload', async (req, res) => {
 		});
 
 		const upload = new AnimalSchema({
-			_id: ObjectId(animalId),
+			_id: animalId,
 			userId,
 			path: `${animalId}_${req.body.path}`,
 			name: req.body.name,
