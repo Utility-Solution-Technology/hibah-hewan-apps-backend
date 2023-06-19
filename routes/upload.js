@@ -14,7 +14,7 @@ const octokit = new Octokit({
 
 router.post('/upload', async (req, res) => {
 	try {
-		const animalId = mongoose.Types.ObjectId().toString();
+		const animalId = new mongoose.Types.ObjectId().toString();
 		const userId = req.body.path.split('_')[0];
 		const content = req.body.base64.split(',')[1];
 
