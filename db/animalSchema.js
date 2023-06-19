@@ -6,6 +6,10 @@ const AnimalSchema = new mongoose.Schema({
     ref: 'users',
     required: true,
   },
+  path: {
+    type: String,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
