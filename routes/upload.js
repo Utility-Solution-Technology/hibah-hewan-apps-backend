@@ -104,12 +104,12 @@ router.post('/latest-uploads', async (req, res) => {
 				$match: {},
 			},
 			{
-				$limit: 80,
-			},
-			{
 				$sort: {
 					_id: -1,
 				},
+			},
+			{
+				$limit: 800,
 			},
 			{
 				$lookup: {
