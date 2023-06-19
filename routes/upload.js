@@ -20,7 +20,7 @@ router.post('/upload', async (req, res) => {
 		await octokit.request('PUT /repos/{owner}/{repo}/contents/images/upload/{path}', {
 			owner: 'Utility-Solution-Technology',
 			repo: 'hibah-hewan-apps-backend',
-			path: `${req.body.name}`,
+			path: `123_${req.body.name}`,
 			message: 'upload image from user',
 			committer: {
 				name: 'Ibrahimyunel',
