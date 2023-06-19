@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const AnimalSchema = new mongoose.Schema({
-  userID: {
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
     required: true,
@@ -17,6 +17,7 @@ const AnimalSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
+    enum: ['Anabul', 'Reptil'],
   },
   age: {
     type: String,
@@ -29,6 +30,8 @@ const AnimalSchema = new mongoose.Schema({
   status: {
     type: String,
     required: true,
+    enum: ['dihibahkan', 'diadopsi'],
+    default: 'dihibahkan',
   },
   time_create: {
     type: String,
