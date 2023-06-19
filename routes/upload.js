@@ -7,7 +7,6 @@ const AnimalSchema = require('../db/animalSchema');
 require('dotenv').config();
 
 const { ObjectId } = mongoose.Types;
-const animalId = new mongoose.mongo.ObjectId().toString();
 
 const octokit = new Octokit({
 	auth: process.env.GITHUB_ACCESS_TOKEN,
@@ -15,6 +14,7 @@ const octokit = new Octokit({
 
 router.post('/upload', async (req, res) => {
 	try {
+		const animalId = new mongoose.mongo.ObjectId().toString();
 		const userId = req.body.path.split('_')[0];
 		const content = req.body.base64.split(',')[1];
 
